@@ -39,7 +39,9 @@ class ProductFactory extends Factory
             'brand_id'=>$this->faker->numberBetween(1,5),
             'supplier_id'=>$this->faker->numberBetween(1,5),
             'product_status'=>'active',
-
+            'meta_title'=>$this->faker->text(50),
+            'meta_description'=>$this->faker->text(80),
+            'meta_keywords'=>$this->faker->text(100),
         ];
     }
 }

@@ -17,6 +17,13 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('feature_image')->nullable();
+            $table->longtext('description')->nullable();
+            $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('popular')->default('0');
+            $table->string('meta_title');
+            $table->string('meta_description');
+            $table->string('meta_keywords');
             $table->timestamps();
         });
     }

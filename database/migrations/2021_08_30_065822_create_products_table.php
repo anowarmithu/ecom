@@ -24,13 +24,17 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->enum('stock_status',['inStock', 'OutOfStock']);
             $table->boolean('featured')->default(false);
+            $table->boolean('treanding')->default(false);
             $table->unsignedInteger('quantity')->default(10);
             $table->string('image')->nullable();
-            $table->text('images')->nullable();
+            $table->text('gallery_images')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('supplier_id')->nullable();
-            $table->enum('product_status',['active', 'inactive']);
+            $table->enum('product_status',['active', 'inactive'])->default('active');
+            $table->string('meta_title');
+            $table->string('meta_description');
+            $table->string('meta_keywords');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

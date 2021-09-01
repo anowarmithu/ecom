@@ -27,6 +27,9 @@ class CategoryFactory extends Factory
         return [
             'name' =>$category_name,
             'slug' =>$slug,
+            'meta_title'=>$this->faker->text(50),
+            'meta_description'=>$this->faker->text(100),
+            'meta_keywords'=>$this->faker->text(50),
         ];
     }
 }
