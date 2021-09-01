@@ -20,15 +20,6 @@ class ProductController extends Controller
         return view('frontend.shop',['products'=>$products]);
     }
 
-    public function cartAdd($product_id, $product_name, $product_price)
-    {
-        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Model\Product');
-        session()->flash('message', 'Item added in Cart');
-        return redirect()->route('cart');
-
-    }
-
-
     public function ProductDetails($slug)
     {
         $product=Product::where('slug',$slug)->first();

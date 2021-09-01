@@ -95,7 +95,7 @@
 											
 										@endif
 										
-										<a href="#" class="btn add-to-cart" wire:click.prevent="cartAdd({{ $product->id}}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
+										<a href="#" class="btn add-to-cart" >Add To Cart</a>
 									</div>
 								</div>
 							</li>
