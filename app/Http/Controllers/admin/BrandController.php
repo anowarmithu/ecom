@@ -9,13 +9,8 @@ use Livewire\WithPagination;
 
 class BrandController extends Controller
 {
-    public function index(Request $request){
-      
-      
+    public function index(){      
       $brands = Brand::with('supplier')->get();
-      
-      // dd($brands);
-
       return view ('backend.brands.index', compact('brands'));
     }
     

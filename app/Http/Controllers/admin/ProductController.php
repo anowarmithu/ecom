@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Models\Product;
+use App\Models\Supplier;
+use App\Models\Brand;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Cart;
@@ -13,6 +15,15 @@ use Gloudemans\Shoppingcart\Cart;
 class ProductController extends Controller
 {
     use WithPagination;
+
+    public function index(){      
+        $products = Product::get();
+        return view ('backend.products.index', compact('products'));
+    }
+
+    
+
+
     
     public function Shop()
     {

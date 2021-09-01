@@ -10,7 +10,13 @@
                 <div class="card-header justify-content-between">
                     <h2>All Brands</h2>
                     <div class=" ">
-                        <span><button type="button" class="btn btn-info"><a href="" class="text-dark" >Add New Brand</a></button></span>
+                        <span>
+                            <button type="button" class="btn btn-info">
+                                <a href="{{ route('admin.brands') }}" class="text-dark" >
+                                    All Brands
+                                </a>
+                            </button>
+                        </span>
                     </div>
                 </div>
                 <div class="card-body pt-0 pb-5">

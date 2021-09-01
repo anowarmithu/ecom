@@ -107,7 +107,7 @@
                             <div class="sub-menu">
                               
                               <li >
-                                <a href="#">All Products</a>
+                                <a href="{{ route('admin.products') }}">All Products</a>
                               </li>
                               
                               <li >

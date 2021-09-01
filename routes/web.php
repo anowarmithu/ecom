@@ -47,6 +47,8 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/brands',[BrandController::class, 'Index'])->name('admin.brands');
     Route::get('/admin/brands/add',[BrandController::class, 'Add'])->name('brands.add');
+    Route::get('/admin/products',[ProductController::class, 'Index'])->name('admin.products');
+
 });
 
 // Route::get('/add/category',[CategoryController::class, 'AddCategory'])->name('add.category');
