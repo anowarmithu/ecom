@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,6 +20,15 @@ class ProductController extends Controller
     public function index(){      
         $products = Product::get();
         return view ('backend.products.index', compact('products'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     

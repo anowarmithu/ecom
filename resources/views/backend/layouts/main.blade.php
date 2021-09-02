@@ -129,11 +129,11 @@
                             <div class="sub-menu">
                               
                               <li >
-                                <a href="#">All Categories</a>
+                                <a href="{{ route('admin.categories') }}">All Categories</a>
                               </li>
                               
                               <li >
-                                <a href="#">Add Category</a>
+                                <a href="{{ route('category.add') }}">Add Category</a>
                               </li>
 
                             </div>
@@ -340,7 +340,7 @@
                       </li>
 
                       <li class="dropdown-footer">
-                        <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                        <a href="{{ route('logout') }}"> <i class="mdi mdi-logout"></i> Log Out </a>
                       </li>
                     </ul>
                   </li>

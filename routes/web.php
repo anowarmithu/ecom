@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\CartController;
+use App\Http\Controllers\admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,9 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/admin/brands',[BrandController::class, 'Index'])->name('admin.brands');
     Route::get('/admin/brands/add',[BrandController::class, 'Add'])->name('brands.add');
     Route::get('/admin/products',[ProductController::class, 'Index'])->name('admin.products');
+    Route::get('/admin/categories',[CategoryController::class, 'Index'])->name('admin.categories');
+    Route::get('/admin/category/add',[CategoryController::class, 'Add'])->name('category.add');
+    Route::get('/show/category/{id}',[CategoryController::class, 'ShowCategory'])->name('show.category');
 
 });
 

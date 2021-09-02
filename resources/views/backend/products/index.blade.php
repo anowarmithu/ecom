@@ -51,21 +51,27 @@
                                 
                                 <td>{{ $product->regular_price }}</td>
                                 <td>{{ $product->sale_price }}</td>
-                                <td>{{ $product->stock_status }}</td>
+                                <td>
+                                    @if ($product->stock_status === 'inStock')
+                                    <span class="badge badge-warning">O</span>
+                                    @else
+                                    <span class="badge badge-success">I</span>  
+                                    @endif
+                                </td>
                                 <td>{{ $product->quantity }}</td>
                                 <td>
                                     @if ($product->featured === 0)
-                                    <span class="badge badge-warning">No</span>
+                                    <span class="badge badge-warning">N</span>
                                     @else
-                                    <span class="badge badge-success">Yes</span>
+                                    <span class="badge badge-success">Y</span>
                                         
                                     @endif
                                 </td>
                                 <td>
                                     @if ($product->treanding === 0)
-                                    <span class="badge badge-warning">No</span>
+                                    <span class="badge badge-warning">N</span>
                                     @else
-                                    <span class="badge badge-success">Yes</span>
+                                    <span class="badge badge-success">Y</span>
                                         
                                     @endif
                                 </td>
@@ -87,10 +93,9 @@
                                 </td>
                                 <td class="d-none d-md-table-cell">
                                     @if ($product->product_status === 'Inactive')
-                                    <span class="badge badge-warning">Inactive</span>
+                                    <span class="badge badge-warning">I</span>
                                     @else
-                                    <span class="badge badge-success">Active</span>
-                                        
+                                    <span class="badge badge-success">A</span>  
                                     @endif
                                 </td>
 
@@ -103,7 +108,7 @@
                                         <ul class="dropdown-menu dropdown-menu-right"
                                             aria-labelledby="dropdown-recent-order1">
                                             <li class="dropdown-item">
-                                                <a href="#">View</a>
+                                                <a href="{{ route('show.category') }}">View</a>
                                             </li>
                                             <li class="dropdown-item">
                                                 <a href="#">Remove</a>
