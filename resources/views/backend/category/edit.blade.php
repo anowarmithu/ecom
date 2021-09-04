@@ -152,17 +152,18 @@
                             <div class="row">
                                   <div class="form-group col-md-6">
                                       <label for="name">Category Name</label>
-                                      <input type="text" class="form-control" name="name" id="name">
+                                      <input type="text" class="form-control" name="name" id="name" value="{{ $category->name }}">
                                   </div>
                                   <div class="form-group col-md-6">
                                       <label for="slug">Category Slug</label>
-                                      <input type="text" class="form-control" name="slug" id="slug" >
+                                      <input type="text" class="form-control" name="slug" id="slug"  value="{{ $category->slug }}" >
                                   </div>
                               </div>
                               
                              
                             
                             <div class="row">
+                                <input type="hidden" name="old_image" value="{{ $category->feature_image }}">
                                 <div class="form-group col-md-3">
                                     <label for="image">Image upload</label>
                                     <input name="feature_image" id="image" type="file" class="form-control file-upload-info" placeholder="Upload Feature Image">
@@ -176,13 +177,13 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                         <label for="description">Category Description</label>
-                                        <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
+                                        <textarea class="form-control" id="description" name="description" rows="3" >{{ $category->description }}"</textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="meta_title">Meta Title</label>
-                                    <input type="text" class="form-control" name="meta_title" id="meta_title">
+                                    <input type="text" class="form-control" name="meta_title" id="meta_title" value="{{ $category->meta_title }}">
                                 </div>
                                 
                                 <div class="form-group col-md-4">
@@ -191,7 +192,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="meta_keywords">Meta Key Words</label>
-                                    <input type="text" class="form-control" name="meta_keywords" id="meta_keywords">
+                                    <input type="text" class="form-control" name="meta_keywords" id="meta_keywords" value="{{ $category->meta_keywords }}">
                                 </div>
 
                             </div>
@@ -200,7 +201,12 @@
                                 <div class="form-group col-md-3">
                                     <label class="form-check-label" style="padding-bottom: 20px">Popularity</label>
                                     <br>
+                                    @if ($category->popular ===0)
+                                    <input type="checkbox" data-toggle="toggle" data-on="Not Popular" data-off="Not Active" data-onstyle="danger" data-offstyle="success" name="popular" value="1" >
+                                    @else
                                     <input type="checkbox" checked data-toggle="toggle" data-on="Not Popular" data-off="Not Active" data-onstyle="danger" data-offstyle="success" name="popular" value="0" >
+                                    @endif
+                                    
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="form-check-label" style="padding-bottom: 20px">Category Status</label>
@@ -210,7 +216,7 @@
                             </div>
                               <hr>
                               <br>
-                              <button type="submit" class="btn btn-primary mr-2">Add</button>
+                              <button type="submit" class="btn btn-primary mr-2">Update</button>
                           </form>
                         
                     

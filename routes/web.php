@@ -51,7 +51,11 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/admin/products',[ProductController::class, 'Index'])->name('admin.products');
     Route::get('/admin/categories',[CategoryController::class, 'Index'])->name('admin.categories');
     Route::get('/admin/category/add',[CategoryController::class, 'Add'])->name('category.add');
+    Route::post('/create/category',[CategoryController::class, 'Store'])->name('store.category');
     Route::get('/show/category/{id}',[CategoryController::class, 'ShowCategory'])->name('show.category');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'Edit'])->name('edit.category');
+    Route::post('/update/category/{id}',[CategoryController::class, 'UpdateCategory'])->name('update.category');
+    Route::get('/delete/category/{id}',[CategoryController::class, 'DeleteCategory'])->name('delete.category');
 
 });
 

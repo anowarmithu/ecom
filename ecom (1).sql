@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2021 at 11:33 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Sep 04, 2021 at 03:30 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -86,7 +86,8 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `feature_image`, `description`, 
 (3, 'dolor sit', 'dolor-sit', NULL, NULL, 0, 0, 'Totam doloremque voluptate quia earum nam minima.', 'Qui cupiditate qui consequuntur quo. Ipsum quo consequuntur voluptas.', 'In hic voluptas sint odit.', '2021-09-01 00:47:54', '2021-09-01 00:47:54'),
 (4, 'corporis incidunt', 'corporis-incidunt', NULL, NULL, 0, 0, 'Corrupti et id enim quia assumenda.', 'Facilis adipisci exercitationem dolores iusto. Modi ab voluptas assumenda sit.', 'Ea voluptatem est beatae magni in cumque.', '2021-09-01 00:47:54', '2021-09-01 00:47:54'),
 (5, 'aspernatur eos', 'aspernatur-eos', NULL, NULL, 0, 0, 'Dolorum dolorum corporis et possimus ipsum eos.', 'Consectetur est quia ut modi. Delectus eum dicta qui pariatur sapiente numquam voluptas.', 'Consequatur sit harum sit beatae.', '2021-09-01 00:47:54', '2021-09-01 00:47:54'),
-(6, 'ullam voluptates', 'ullam-voluptates', NULL, NULL, 0, 0, 'Iste et nihil reprehenderit ex.', 'Sint ipsa dolorem eius hic. Voluptas praesentium soluta officia laudantium quisquam.', 'Voluptas praesentium unde repellendus.', '2021-09-01 00:47:54', '2021-09-01 00:47:54');
+(6, 'ullam voluptates', 'ullam-voluptates', NULL, NULL, 0, 0, 'Iste et nihil reprehenderit ex.', 'Sint ipsa dolorem eius hic. Voluptas praesentium soluta officia laudantium quisquam.', 'Voluptas praesentium unde repellendus.', '2021-09-01 00:47:54', '2021-09-01 00:47:54'),
+(12, 'Anowar Hosene  we', 'we e', '1709887676237742.jpg', 'f wwef we', 1, 1, 'we ff', 'wf', 'feew', '2021-09-03 07:32:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -242,7 +243,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('z8GzTyDSimO6SxVRHsMnsuxnAtYKUNjzqVIOIF3q', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiUVo2ZjgydFZWVVp2NWlna2F1MjhvODk1UTFJZDZSV0hubFJEN1gwaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9icmFuZHMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NToidVR5cGUiO3M6MzoiYWRtIjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJENHRER3bTJ4bjhwYVpLMnYwa0hmUE8yT0FLQWdnS3NqelRYZThSZU15dEhRQjdNVDllZG5xIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRDR0REd20yeG44cGFaSzJ2MGtIZlBPMk9BS0FnZ0tzanpUWGU4UmVNeXRIUUI3TVQ5ZWRucSI7fQ==', 1630488789);
+('Sj1FDYQt2iRSWdMdlefAAdiFMC9xZbSjM1xx62Wn', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiMXNGQ0pwQmVvTE14c1Y0ZnZic3BGbW5ZZGlCQzN3Q0g0dDZlVDZRZyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL3Byb2R1Y3RzIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jYXRlZ29yeS9hZGQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NToidVR5cGUiO3M6MzoiYWRtIjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJENHRER3bTJ4bjhwYVpLMnYwa0hmUE8yT0FLQWdnS3NqelRYZThSZU15dEhRQjdNVDllZG5xIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRDR0REd20yeG44cGFaSzJ2MGtIZlBPMk9BS0FnZ0tzanpUWGU4UmVNeXRIUUI3TVQ5ZWRucSI7fQ==', 1630683187);
 
 -- --------------------------------------------------------
 
@@ -421,7 +422,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

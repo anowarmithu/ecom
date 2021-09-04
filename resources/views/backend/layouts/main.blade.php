@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
   <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
   <!-- PLUGINS CSS STYLE -->
   <link href="{{asset ('assets/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
   <link href="{{asset ('assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
@@ -19,6 +21,7 @@
   <link href="{{asset ('assets/plugins/ladda/ladda.min.css') }}" rel="stylesheet" />
   <link href="{{asset ('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
   <link href="{{asset ('assets/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
+
 
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{asset ('assets/css/sleek.css') }}" />
@@ -265,7 +268,7 @@
 
               <div class="navbar-right ">
                 <ul class="nav navbar-nav">
-{{--                  
+                {{--                  
                   <li class="dropdown notifications-menu">
                     <button class="dropdown-toggle" data-toggle="dropdown">
                       <i class="mdi mdi-bell-outline"></i>
@@ -351,9 +354,23 @@
 
           </header>
 
+          <div class="content">
+            <div class="row">
+                <div class="col-12">
+        
+                    @if(Session::has('message'))
+                    <div class="alert {{ Session::get('alert-class') }} fade-in" id="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    {{ Session::get('message') }}
+                    </div>
+                    @endif
+
         @yield('content')
 
 
+      </div>
+    </div>
+</div>
         <footer class="footer mt-auto">
             <div class="copyright bg-white">
               <p>
@@ -398,9 +415,15 @@
 <script src="{{asset ('assets/js/map.js') }}"></script>
 <script src="{{asset ('assets/js/custom.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 
 
+<script>
+  $("#alert").fadeTo(10000, 500).slideUp(500, function(){
+  $("#alert").slideUp(500);
+});
+</script>
   </body>
 </html>
 

@@ -108,7 +108,7 @@
                                         <ul class="dropdown-menu dropdown-menu-right"
                                             aria-labelledby="dropdown-recent-order1">
                                             <li class="dropdown-item">
-                                                <a href="{{ route('show.category') }}">View</a>
+                                                <a href="">View</a>
                                             </li>
                                             <li class="dropdown-item">
                                                 <a href="#">Remove</a>

@@ -5,6 +5,8 @@
 <div class="content">
     <div class="row">
         <div class="col-12">
+
+
             <!-- Recent Order Table -->
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between">
@@ -29,7 +31,7 @@
                                 <th class="d-none d-md-table-cell">Popular</th>
                                 <th class="d-none d-md-table-cell">Status</th>
                                 <th>Created</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +42,7 @@
                                     <a class="text-dark" href="">{{ $category->name }}</a>
                                 </td>
                                 <td>
-                                    <img src="{{ asset('images/category')}}/{{ $category->feature_image }}" style="width:100px"alt="{{ $category->name }}">
+                                    <img src="{{(!empty($category->feature_image))?url('images/category/featureImages/'.$category->feature_image):url('images/noimage/images.jpg')}}" style="width:100px"alt="{{ $category->name }}">
                                 </td>
                                 
                                 <td>
@@ -54,10 +56,10 @@
 
                                
                                 <td class="d-none d-md-table-cell">
-                                    @if ($category->status === 'Inactive')
-                                    <span class="badge badge-warning">Inactive</span>
-                                    @else
+                                    @if ($category->status === 0)
                                     <span class="badge badge-success">Active</span>
+                                    @else
+                                    <span class="badge badge-warning">Inactive</span>
                                         
                                     @endif
                                 </td>
@@ -65,21 +67,11 @@
                                 
                                 <td class="d-none d-md-table-cell">{{ $category->created_at->diffForHumans()}}</td>
                                 
-                                <td class="text-right">
-                                    <div class="dropdown show d-inline-block widget-dropdown">
-                                        <a class="dropdown-toggle icon-burger-mini" href="" role="button"
-                                            id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" data-display="static"></a>
-                                        <ul class="dropdown-menu dropdown-menu-right"
-                                            aria-labelledby="dropdown-recent-order1">
-                                            <li class="dropdown-item">
-                                                <a href="{{ route('show.category', $category->id)}}" >View</a>
-                                            </li>
-                                            <li class="dropdown-item">
-                                                <a href="#">Remove</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                <td>
+                                    <button>
+                                        <a href="{{ route('show.category', $category->id)}}"><span class="mdi mdi-eye"> View</span></a>
+                                        
+                                    </button>
                                 </td>
                             </tr>
                             @endforeach                           
@@ -90,5 +82,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection
