@@ -57,9 +57,9 @@
                                
                                 <td class="d-none d-md-table-cell">
                                     @if ($category->status === 0)
-                                    <span class="badge badge-success">Active</span>
-                                    @else
                                     <span class="badge badge-warning">Inactive</span>
+                                    @else
+                                    <span class="badge badge-success">Active</span>
                                         
                                     @endif
                                 </td>

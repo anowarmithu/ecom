@@ -5,16 +5,13 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-Use Intervention\Image\Facades\Image;
-use App\Models\Multiple_img;
 
 
 class CategoryController extends Controller
 {
     public function index(){      
-        $categories = Category::get();
+        $categories = Category::orderBy('id','desc')->get();
         return view ('backend.category.index', compact('categories'));
     }
 
@@ -25,29 +22,31 @@ class CategoryController extends Controller
     }
 
     public function Store(Request $request){
-
+        // dd($request);
         // $validatedData = $request->validate([
         //     'category_id' => 'required',
         //     'district_id' => 'required',
         //     'image' => 'required|mimes:jpg,png,jpeg|max:5048',
         // ]);
 
-        $image =$request->file('feature_image');
-
-        $name_gen = hexdec(uniqid()); //to generate uniq id for uploaded image
-        $img_ext = strtolower($image -> getClientOriginalExtension());
-        $image_name = $name_gen.'.'.$img_ext; //image name
-        $upload_location = 'images/category/featureImages';
-        $img  = $image_name;
-        $image->move($upload_location,$image_name);
+        $img = null;
+        if ($request->hasFile('feature_image')){
+            $image =$request->file('feature_image');
+            $name_gen = hexdec(uniqid()); //to generate uniq id for uploaded image
+            $img_ext = strtolower($image -> getClientOriginalExtension());
+            $image_name = $name_gen.'.'.$img_ext; //image name
+            $upload_location = 'images/category/featureImages';
+            $img  = $image_name;
+            $image->move($upload_location,$image_name);
+        }
 
         Category::insert([
             'name' => $request->name,
             'slug' => $request->slug,
             'feature_image' => $img,
             'description' => $request->description,
-            'status' => $request->status,
-            'popular' => $request->popular,
+            'status' => $request->status ? 1 : 0,
+            'popular' => $request->popular ? 1 : 0,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
             'meta_keywords' => $request->meta_keywords,
@@ -72,65 +71,50 @@ class CategoryController extends Controller
 
     public function Edit($id){
         $category = Category::find($id);
+        // dd($category);
         return view ('backend.category.edit',compact('category'));
     }
 
     public function UpdateCategory(Request $request, $id){
-        
 
-        $old_image = $request->old_image; //to trace onl image
-
-        $feature_image =$request->file('feature_image');
-        if($feature_image){
-
-            $name_gen = hexdec(uniqid()); //to generate uniq id for uploaded image
-            $img_ext = strtolower($feature_image -> getClientOriginalExtension());
-            $image_name = $name_gen.'.'.$img_ext; //image name
-            $upload_location = 'images/category/featureImages';
-            $img  = $image_name;
-            $feature_image->move($upload_location,$image_name);       
-            unlink($old_image);///to remove existing image
-        
-            Category::find($id)->update([
-                'name' => $request->name,
-                'slug' => $request->slug,
-                'feature_image' => $img,
-                'description' => $request->description,
-                'status' => $request->status,
-                'popular' => $request->popular,
-                'meta_title' => $request->meta_title,
-                'meta_description' => $request->meta_description,
-                'meta_keywords' => $request->meta_keywords,
-                'created_at' => Carbon::now()
-            ]);
-
-            $notification =array(
-                'message' => 'Category Updated successfully!',
-                'alert-class' => 'alert-info',
-            );
-    
-            return Redirect()->route('admin.categories')->with($notification);
-
-        }else{
-            Category::find($id)->update([
-                'name' => $request->name,
-                'slug' => $request->slug,
-                'description' => $request->description,
-                'status' => $request->status,
-                'popular' => $request->popular,
-                'meta_title' => $request->meta_title,
-                'meta_description' => $request->meta_description,
-                'meta_keywords' => $request->meta_keywords,
-                'created_at' => Carbon::now()
-            ]);
-            $notification =array(
-                'message' => 'Category Updated successfully!',
-                'alert-class' => 'alert-info',
-            );
-    
-            return Redirect()->route('admin.categories')->with($notification);
+        //find the row
+        $category = Category::findOrFail($id);
+// dd($request);
+        //unlink if exist image
+        if($category->feature_image && $request->hasFile('feature_image')){
+            unlink(public_path('images/category/featureImages/'.$category->feature_image));
+        }
+        //create new image
+        if($request->hasFile('feature_image')){
+                $feature_image = $request->file('feature_image');
+                $name_gen = hexdec(uniqid()); //to generate uniq id for uploaded image
+                $img_ext = strtolower($feature_image -> getClientOriginalExtension());
+                $image_name = $name_gen.'.'.$img_ext; //image name
+                $upload_location = 'images/category/featureImages';
+                $feature_image->move($upload_location,$image_name);
+                $category->feature_image = $image_name;
         }
 
+        //rest insert operation
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->description = $request->description;
+        $category->status = $request->status ? 1 : 0;
+        $category->popular = $request->popular ? 1 : 0;
+        $category->meta_title = $request->meta_title;
+        $category->meta_description = $request->meta_description;
+        $category->meta_keywords = $request->meta_keywords;
+        $category->updated_at = now();
+        $category->save();
+
+        //notification
+        $notification =array(
+            'message' => 'Category Updated successfully!',
+            'alert-class' => 'alert-info',
+        );
+
+        //return
+        return Redirect()->route('admin.categories')->with($notification);
     }
 
 

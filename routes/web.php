@@ -58,9 +58,3 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/delete/category/{id}',[CategoryController::class, 'DeleteCategory'])->name('delete.category');
 
 });
-
-// Route::get('/add/category',[CategoryController::class, 'AddCategory'])->name('add.category');
-// Route::post('/create/category',[CategoryController::class, 'CreateCategory'])->name('create.category');
-// Route::get('/edit/category/{id}',[CategoryController::class, 'EditCategory'])->name('edit.category');
-// Route::post('/update/category/{id}',[CategoryController::class, 'UpdateCategory'])->name('update.category');
-// Route::get('/delete/category/{id}',[CategoryController::class, 'DeleteCategory'])->name('delete.category');

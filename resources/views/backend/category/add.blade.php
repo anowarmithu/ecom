@@ -197,16 +197,18 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="form-group col-md-3">
-                                    <label class="form-check-label" style="padding-bottom: 20px">Popularity</label>
-                                    <br>
-                                    <input type="checkbox" checked data-toggle="toggle" data-on="Not Popular" data-off="Not Active" data-onstyle="danger" data-offstyle="success" name="popular" value="0" >
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label class="form-check-label" style="padding-bottom: 20px">Category Status</label>
-                                    <br>
-                                    <input type="checkbox" checked value="1" data-toggle="toggle" data-on="Active" data-off="Not Active" data-onstyle="success" data-offstyle="danger" name="status" value="1" >
-                                </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="popular" name="popular">
+                                <label class="form-check-label" for="popular">
+                                  Popularity
+                                </label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="status" name="status">
+                                <label class="form-check-label" for="status">
+                                  Status
+                                </label>
+                              </div>
                             </div>
                               <hr>
                               <br>
