@@ -11,13 +11,8 @@
                 <div class="card-header justify-content-between">
                     <h2>Add Category</h2>
                     <div class=" ">
-                        <span>
-                            <button type="button" class="btn btn-info">
-                                <a href="{{ route('admin.categories') }}" class="text-dark" >
-                                    All Categories
-                                </a>
-                            </button>
-                        </span>
+                    <a href="{{ route('admin.categories') }}" class="btn btn-info" role="button" aria-pressed="true">Add Category</a>
+                      
                     </div>
                 </div>
                 <hr>

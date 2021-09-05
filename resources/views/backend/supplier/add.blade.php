@@ -132,24 +132,23 @@
             <!-- Recent Order Table -->
             <div class="card card-table-border-none" id="recent-orders">
                 <div class="card-header justify-content-between">
-                    <h2>Add Category</h2>
-                    <div class=" "><a href="{{ route('admin.categories') }}" class="btn btn-info" role="button" aria-pressed="true">Add Category</a>
+                    <h2>Add Supplier</h2>
+                    <div class=" "><a href="{{ route('admin.suppliers') }}" class="btn btn-info" role="button" aria-pressed="true">All Supplier</a>
                     </div>
                 </div>
                 <hr>
                 <div class="card-body pt-0 pb-5">
 
-                          <form class="forms-sample" method="POST" action="{{route('store.category')}}" enctype="multipart/form-data">
+                          <form class="forms-sample" method="POST" action="{{route('store.supplier')}}" enctype="multipart/form-data">
                             @csrf
-          
                             <div class="row">
                                   <div class="form-group col-md-6">
-                                      <label for="name">Category Name</label>
+                                      <label for="name">Supplier Name</label>
                                       <input type="text" class="form-control" name="name" id="name">
                                   </div>
                                   <div class="form-group col-md-6">
-                                      <label for="slug">Category Slug</label>
-                                      <input type="text" class="form-control" name="slug" id="slug" >
+                                      <label for="mobile">Supplier Mobile</label>
+                                      <input type="tel" class="form-control" name="mobile" id="mobile" >
                                   </div>
                               </div>
                               
@@ -157,54 +156,41 @@
                             
                             <div class="row">
                                 <div class="form-group col-md-3">
-                                    <label for="image">Image upload</label>
-                                    <input name="feature_image" id="image" type="file" class="form-control file-upload-info" placeholder="Upload Feature Image">
+                                    <label for="logo">Upload Logo</label>
+                                    <input name="logo" id="logo" type="file" class="form-control file-upload-info" >
                                     <img src="" alt="">
                                   </div>
                                   <div class="form-group col-md-3">
                                     <label>Image Preview</label>
-                                  
                                     <img src="" alt="">
                                     
                                 </div>
+                                <div class="form-group col-md-3">
+                                    <label for="feature_image">Upload Feature Image</label>
+                                    <input name="feature_image" id="feature_image" type="file" class="form-control file-upload-info" >
+                                    <img src="" alt="">
+                                  </div>
+                                  <div class="form-group col-md-3">
+                                    <label>Image Preview</label>
+                                    <img src="" alt="">
+                                    
+                                </div>
+                                 </div>
+                                <div class="row">
                                 <div class="form-group col-md-6">
-                                        <label for="description">Category Description</label>
+                                        <label for="description">Supplier Description</label>
                                         <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label for="meta_title">Meta Title</label>
-                                    <input type="text" class="form-control" name="meta_title" id="meta_title">
-                                </div>
-                                
-                                <div class="form-group col-md-4">
-                                    <label for="meta_description">Meta Description</label>
-                                    <textarea type="text" class="form-control" name="meta_description" id="meta_description" rows=""></textarea>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="meta_keywords">Meta Key Words</label>
-                                    <input type="text" class="form-control" name="meta_keywords" id="meta_keywords">
-                                </div>
-
-                            </div>
-                            <br>
-                            <div class="row">
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="popular" name="popular">
-                                <label class="form-check-label" for="popular">
-                                  Popularity
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="status" name="status">
-                                <label class="form-check-label" for="status">
+                                 <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="supplier_status" name="supplier_status" checked>
+                                <label class="form-check-label" for="supplier_status">
                                   Status
                                 </label>
                               </div>
                             </div>
-                              <hr>
-                              <br>
+                            
+                            <br>
+                          
                               <button type="submit" class="btn btn-primary mr-2">Add</button>
                           </form>
                         

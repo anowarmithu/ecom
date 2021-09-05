@@ -173,11 +173,11 @@
                             <div class="sub-menu">
                               
                               <li >
-                                <a href="#">All Suppliers</a>
+                                <a href="{{route('admin.suppliers')}}">All Suppliers</a>
                               </li>
                               
                               <li >
-                                <a href="#">Add Supplier</a>
+                                <a href="{{route('add.supplier')}}">Add Supplier</a>
                               </li>
 
                             </div>
@@ -418,7 +418,7 @@
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 
-
+{{-- notification --}}
 <script>
   $("#alert").fadeTo(10000, 500).slideUp(500, function(){
   $("#alert").slideUp(500);

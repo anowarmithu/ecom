@@ -12,13 +12,8 @@
                 <div class="card-header justify-content-between">
                     <h2>All Categories</h2>
                     <div class=" ">
-                        <span>
-                            <button type="button" class="btn btn-info">
-                                <a href="{{ route('category.add') }}" class="text-dark" >
-                                    Add Category
-                                </a>
-                            </button>
-                        </span>
+                    <a href="{{ route('category.add') }}" class="btn btn-info" role="button" aria-pressed="true">Add Category</a>
+
                     </div>
                 </div>
                 <div class="card-body pt-0 pb-5">
@@ -30,7 +25,7 @@
                                 <th class="d-none d-md-table-cell">Feature</th>
                                 <th class="d-none d-md-table-cell">Popular</th>
                                 <th class="d-none d-md-table-cell">Status</th>
-                                <th>Created</th>
+                                <th>Modifide</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,13 +60,18 @@
                                 </td>
 
                                 
-                                <td class="d-none d-md-table-cell">{{ $category->created_at->diffForHumans()}}</td>
+                                <td class="d-none d-md-table-cell">
+
+                                @if ( $category->updated_at === null)
+                                    {{ $category->created_at->diffForHumans()}}
+                                @else
+                                    {{ $category->updated_at->diffForHumans()}}
+                                @endif 
+                                </td>
                                 
                                 <td>
-                                    <button>
-                                        <a href="{{ route('show.category', $category->id)}}"><span class="mdi mdi-eye"> View</span></a>
+                                        <a href="{{ route('show.category', $category->id)}}"  class="btn btn-info" role="button" aria-pressed="true"><span class="mdi mdi-eye"> View</span></a>
                                         
-                                    </button>
                                 </td>
                             </tr>
                             @endforeach                           
