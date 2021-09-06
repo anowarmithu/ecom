@@ -27,7 +27,7 @@
                           <br>
                         <label for="feature">Supplier Feature Image</label>
                         <br>
-                          <img id="feature" class="card-img-top" src="{{(!empty($supplier->feature_image))?url('images/supplier/featureImages/'.$supplier->feature_image):url('images/noimage/images.jpg')}}" style="width:300px" >
+                          <img id="feature" class="card-img-top" src="{{(!empty($supplier->feature_image))?url('images/supplier/featureImages/'.$supplier->feature_image):url('images/noimage/images.jpg')}}" style="width:250px" >
                         </div>
                        
                         <div class="col-md-8">
@@ -64,9 +64,8 @@
                         </table>
                         <span>
                           
-                              {{-- <a href="{{url('supplier/edit/'.$supplier->id)}}" class="btn btn-primary" role="button" aria-pressed="true">Edit supplier</a> --}}
+                              <a href="{{url('supplier/edit/'.$supplier->id)}}" class="btn btn-primary" role="button" aria-pressed="true">Edit supplier</a>
 
-                              <a href="" class="btn btn-primary" role="button" aria-pressed="true">Edit Supplier</a>
                           
                       </span>
                       <span>

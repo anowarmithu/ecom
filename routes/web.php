@@ -63,6 +63,8 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/admin/supplier/add',[SupplierController::class, 'Add'])->name('add.supplier');
     Route::post('/create/supplier',[SupplierController::class, 'Store'])->name('store.supplier');
     Route::get('/show/supplier/{id}',[SupplierController::class, 'ShowSupplier'])->name('show.supplier');
+    Route::get('/supplier/edit/{id}', [SupplierController::class, 'Edit'])->name('edit.supplier');
+    Route::post('/update/supplier/{id}',[SupplierController::class, 'Update'])->name('update.supplier');
     Route::get('/delete/supplier/{id}',[SupplierController::class, 'DeleteSupplier'])->name('delete.supplier');
 
 

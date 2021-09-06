@@ -57,7 +57,7 @@ class SupplierController extends Controller
             'logo' => $logo,
             'feature_image' => $img,
             'description' => $request->description,
-            'supplier_status' => $request->status ? 0 : 1,
+            'supplier_status' => $request->supplier_status,
             'created_at' => now()
         ]);
 
@@ -74,6 +74,61 @@ class SupplierController extends Controller
     public function ShowSupplier($id){
         $supplier= Supplier::findOrFail($id);
         return view ('backend.supplier.show', compact('supplier'));
+    }
+
+    public function Edit($id){
+        $supplier = Supplier::find($id);
+        return view ('backend.supplier.edit',compact('supplier'));
+    }
+
+    public function Update(Request $request, $id){
+
+        $supplier=Supplier::findOrFail($id);
+
+        if($supplier->logo && $request->hasFile('logo')){
+            unlink(public_path('images/supplier/logo/'.$supplier->logo));
+        }
+
+        if ($request->hasFile('logo')){
+            $logo =$request->file('logo');
+            $name_gen = hexdec(uniqid()); //to generate uniq id for logo image
+            $img_ext = strtolower($logo -> getClientOriginalExtension());
+            $image_name = $name_gen.'.'.$img_ext; //image name
+            $upload_location = 'images/supplier/logo';
+            $logo->move($upload_location,$image_name);
+            $supplier->logo = $image_name;
+        }
+
+        if($supplier->feature_image && $request->hasFile('feature_image')){
+            unlink(public_path('images/supplier/featureImages/'.$supplier->feature_image));
+        }
+
+        if ($request->hasFile('feature_image')){
+            $feature_image =$request->file('feature_image');
+            $name_gen = hexdec(uniqid()); //to generate uniq id for logo image
+            $img_ext = strtolower($feature_image -> getClientOriginalExtension());
+            $image_name = $name_gen.'.'.$img_ext; //image name
+            $upload_location = 'images/supplier/logo';
+            $feature_image->move($upload_location,$image_name);
+            $supplier->feature_image = $image_name;
+        }
+
+
+            //rest insert operation
+            $supplier->name = $request->name;
+            $supplier->mobile = $request->mobile;
+            $supplier->description = $request->description;
+            $supplier->supplier_status = $request->supplier_status;
+            $supplier->updated_at = now();
+            $supplier->save();
+
+        $notification =array(
+            'message' => 'Supplier updated successfully!',
+            'alert-class' => 'alert-success',
+        );
+
+        return Redirect()->route('admin.suppliers')->with($notification);
+
     }
     
     public function DeleteSupplier($id){
