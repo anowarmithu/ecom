@@ -34,21 +34,35 @@
                                 <div class="form-group col-md-3">
                                     <label for="logo">Upload Logo</label>
                                     <input name="logo" id="logo" type="file" class="form-control file-upload-info" >
-                                    <img src="" alt="">
+                                    
                                   </div>
                                   <div class="form-group col-md-3">
-                                    <label>Image Preview</label>
-                                    <img src="" alt="">
+                                    <label>Image Preview</label><br>
+                                    <img  src="{{(!empty($supplier->logo))?url('images/supplier/logo/'.$supplier->logo):url('images/noimage/images.jpg')}}" style="width: 180px" id='logo' alt="">
+                                  
                                     
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="feature_image">Upload Feature Image</label>
-                                    <input name="feature_image" id="feature_image" type="file" class="form-control file-upload-info" >
-                                    <img src="" alt="">
+                                    <input name="feature_image" id="feature_image" type="file" class="form-control file-upload-info">
+                                    
                                   </div>
                                   <div class="form-group col-md-3">
-                                    <label>Image Preview</label>
-                                    <img src="" alt="">
+                                    <label>Image Preview</label><br>
+                                    <img id='output' src="{{(!empty($supplier->feature_image))?url('images/supplier/featureImages/'.$supplier->feature_image):url('images/noimage/images.jpg')}}" style="width: 180px">
+
+                                    <script>
+                                        var openFile = function(event) {
+                                          var input = event.target;
+                                          var reader = new FileReader();
+                                          reader.onload = function(){
+                                            var dataURL = reader.result;
+                                            var output = document.getElementById('output', 'logo');
+                                            output.src = dataURL;
+                                          };
+                                          reader.readAsDataURL(input.files[0]);
+                                        };
+                                      </script>
                                     
                                 </div>
                                  </div>
@@ -70,7 +84,7 @@
                             
                             <br>
                           
-                              <button type="submit" class="btn btn-primary mr-2">Add</button>
+                              <button type="submit" class="btn btn-primary mr-2">Update</button>
                           </form>
                         
                     

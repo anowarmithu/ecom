@@ -47,8 +47,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //Admin
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/brands',[BrandController::class, 'Index'])->name('admin.brands');
-    Route::get('/admin/brands/add',[BrandController::class, 'Add'])->name('brands.add');
     Route::get('/admin/products',[ProductController::class, 'Index'])->name('admin.products');
     //categories
     Route::get('/admin/categories',[CategoryController::class, 'Index'])->name('admin.categories');
@@ -66,6 +64,15 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function () {
     Route::get('/supplier/edit/{id}', [SupplierController::class, 'Edit'])->name('edit.supplier');
     Route::post('/update/supplier/{id}',[SupplierController::class, 'Update'])->name('update.supplier');
     Route::get('/delete/supplier/{id}',[SupplierController::class, 'DeleteSupplier'])->name('delete.supplier');
+
+    //Brands
+    Route::get('/admin/brands',[BrandController::class, 'Index'])->name('admin.brands');
+    Route::get('/admin/brands/add',[BrandController::class, 'Add'])->name('brands.add');
+    Route::post('/create/brand',[BrandController::class, 'Store'])->name('store.brand');
+    Route::get('/show/brand/{id}',[BrandController::class, 'Show'])->name('show.brand');
+    Route::get('/brand/edit/{id}', [BrandController::class, 'Edit'])->name('edit.brand');
+    Route::post('/update/brand/{id}',[BrandController::class, 'Update'])->name('update.brand');
+    Route::get('/delete/brand/{id}',[BrandController::class, 'Delete'])->name('delete.brand');
 
 
 });

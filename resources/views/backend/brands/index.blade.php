@@ -10,13 +10,9 @@
                 <div class="card-header justify-content-between">
                     <h2>All Brands</h2>
                     <div class=" ">
-                        <span>
-                            <button type="button" class="btn btn-info">
-                                <a href="{{ route('brands.add') }}" class="text-dark" >
-                                    Add Brand
-                                </a>
-                            </button>
-                        </span>
+                        <a href="{{ route('brands.add') }}" class="btn btn-info">
+                            Add Brand
+                        </a>
                     </div>
                 </div>
                 <div class="card-body pt-0 pb-5">
@@ -30,7 +26,7 @@
                                 <th class="d-none d-md-table-cell">Popular</th>
                                 <th class="d-none d-md-table-cell">Supplier</th>
                                 <th class="d-none d-md-table-cell">Status</th>
-                                <th>Created</th>
+                                <th>Modifide</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -42,35 +38,43 @@
                                     <a class="text-dark" href="">{{ $brand->name }}</a>
                                 </td>
                                 <td>
-                                    <img src="{{ asset('images/brands/logos')}}/{{ $brand->logo }}" style="width:100px"alt="{{ $brand->name }}">
+                                    <img src="{{ asset('images/brands/logos')}}/{{ $brand->logo }}" style="width:100px"
+                                        alt="{{ $brand->name }}">
                                 </td>
                                 <td>
-                                    <img src="{{ asset('images/brands/features')}}/{{ $brand->feature_image }}" style="width:100px"alt="{{ $brand->name }}">
+                                    <img src="{{ asset('images/brands/features')}}/{{ $brand->feature_image }}"
+                                        style="width:100px" alt="{{ $brand->name }}">
                                 </td>
                                 <td>
                                     @if ($brand->popular_brand === 'Inactive')
-                                    <span class="badge badge-warning">No</span>
+                                    <span class="badge badge-pill badge-danger">No</span>
                                     @else
-                                    <span class="badge badge-success">Yes</span>
-                                        
+                                    <span class="badge badge-pill  badge-success">Yes</span>
+
                                     @endif
                                 </td>
-                                
+
                                 <td>
                                     <a class="text-dark" href="">{{ $brand->supplier->name }}</a>
                                 </td>
                                 <td class="d-none d-md-table-cell">
                                     @if ($brand->popular_brand === 'Inactive')
-                                    <span class="badge badge-warning">Inactive</span>
+                                    <span class="badge badge-pill  badge-danger">Inactive</span>
                                     @else
-                                    <span class="badge badge-success">Active</span>
-                                        
+                                    <span class="badge badge-pill  badge-success">Active</span>
+
                                     @endif
                                 </td>
 
-                                
-                                <td class="d-none d-md-table-cell">{{ $brand->created_at->diffForHumans()}}</td>
-                                
+
+                                <td class="d-none d-md-table-cell">
+                                    @if ( $brand->updated_at === null)
+                                    {{ $brand->created_at->diffForHumans()}}
+                                    @else
+                                    {{ $brand->updated_at->diffForHumans()}}
+                                    @endif
+                                </td>
+
                                 <td class="text-right">
                                     <div class="dropdown show d-inline-block widget-dropdown">
                                         <a class="dropdown-toggle icon-burger-mini" href="" role="button"
@@ -88,7 +92,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach                           
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

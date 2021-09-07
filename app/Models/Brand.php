@@ -27,4 +27,8 @@ class Brand extends Model
        
         return $this->hasOne(Supplier::class,'id','supplier_id');
     }
+
+    
+
+
 }

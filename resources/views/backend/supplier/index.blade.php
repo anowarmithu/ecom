@@ -12,7 +12,8 @@
                 <div class="card-header justify-content-between">
                     <h2>All Suppliers</h2>
                     <div class=" ">
-                    <a href="{{ route('add.supplier') }}" class="btn btn-info" role="button" aria-pressed="true">Add Supplier</a>
+                        <a href="{{ route('add.supplier') }}" class="btn btn-info" role="button" aria-pressed="true">Add
+                            Supplier</a>
 
                     </div>
                 </div>
@@ -37,17 +38,19 @@
                                 <td>
                                     <a class="text-dark" href="">{{ $supplier->name }}</a>
                                 </td>
-                               
+
                                 <td>
-                                    <img src="{{(!empty($supplier->logo))?url('images/supplier/logo/'.$supplier->logo):url('images/noimage/images.jpg')}}" style="width:100px"alt="{{ $supplier->name }}">
+                                    <img src="{{(!empty($supplier->logo))?url('images/supplier/logo/'.$supplier->logo):url('images/noimage/images.jpg')}}"
+                                        style="width:100px" alt="{{ $supplier->name }}">
                                 </td>
-                                 <td>
+                                <td>
                                     <a class="text-dark" href="">{{ $supplier->mobile }}</a>
                                 </td>
                                 <td>
-                                    <img src="{{(!empty($supplier->feature_image))?url('images/supplier/featureImages/'.$supplier->feature_image):url('images/noimage/images.jpg')}}" style="width:100px"alt="{{ $supplier->name }}">
+                                    <img src="{{(!empty($supplier->feature_image))?url('images/supplier/featureImages/'.$supplier->feature_image):url('images/noimage/images.jpg')}}"
+                                        style="width:100px" alt="{{ $supplier->name }}">
                                 </td>
-                                
+
                                 <td class="d-none d-md-table-cell">
                                     @if ($supplier->supplier_status === 'Active')
                                     <span class="badge badge-pill badge-info">Active </span>
@@ -58,21 +61,21 @@
 
                                 <td class="d-none d-md-table-cell">
                                     @if ( $supplier->updated_at === null)
-                                        {{ $supplier->created_at->diffForHumans()}}
+                                    {{ $supplier->created_at->diffForHumans()}}
                                     @else
-                                        {{ $supplier->updated_at->diffForHumans()}}
-                                    @endif 
+                                    {{ $supplier->updated_at->diffForHumans()}}
+                                    @endif
                                 </td>
-                                
+
                                 <td>
-                                    <a href="{{ route('show.supplier', $supplier->id)}}"  class="btn btn-secondary" role="button" aria-pressed="true"><span class="mdi mdi-eye"> View</span></a>
+                                    <a href="{{ route('show.supplier', $supplier->id)}}" class="btn btn-secondary"
+                                        role="button" aria-pressed="true"><span class="mdi mdi-eye"> View</span></a>
                                 </td>
                             </tr>
-                            @endforeach                           
+                            @endforeach
                         </tbody>
                     </table>
-                   {{ $suppliers->links() }}
-                   {{-- {!! $suppliers->appends(Request::all())->links() !!} --}}
+                    {{ $suppliers->links() }}
                 </div>
             </div>
         </div>
